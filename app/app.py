@@ -40,7 +40,7 @@ with tab1:
 
     c1, c2 = st.columns(2)
     with c1:
-        st.image(IMG_HIST), caption="Distribución de Tmin media por distrito", use_column_width=True)
+        st.image(IMG_HIST, caption="Distribución de Tmin media por distrito", use_column_width=True)
     with c2:
         st.image(str(IMG_MAPA), caption="Mapa de distritos según Tmin media", use_container_width=True)
 
@@ -118,6 +118,7 @@ with tab2:
     with c2: st.image(str(P3_CNT), caption="Distritos objetivo por departamento", use_container_width=True)
     st.image(str(P3_MAP), caption="Mapa · distritos amazónicos objetivo", use_container_width=True)
     
+
 
 
 
