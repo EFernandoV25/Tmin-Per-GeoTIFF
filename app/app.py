@@ -7,10 +7,10 @@ st.set_page_config(page_title="Análisis Tmin y Políticas", layout="wide")
 
 # Ruta relativa: desde app/ ir a assets/
 REPO_ROOT = Path(__file__).resolve().parents[1]
-ASSETS = REPO_ROOT / "assets "
+ASSETS = REPO_ROOT /"assets "
 
 # Archivos Hoja 1 (Path, no strings)
-IMG_HIST   = ASSETS / "hist_tmin_media.png"
+IMG_HIST   = "app/assets/hist_tmin_media.png"
 IMG_MAPA   = ASSETS / "mapa_distritos_tmin_mean.png"
 IMG_TOP_MIN = ASSETS / "Top_15_distritos_bajos.png"
 IMG_TOP_MAX = ASSETS / "Top_15_distritos_altos.png"
@@ -121,6 +121,7 @@ with tab2:
     with c2: st.image(str(P3_CNT), caption="Distritos objetivo por departamento", use_container_width=True)
     st.image(str(P3_MAP), caption="Mapa · distritos amazónicos objetivo", use_container_width=True)
     
+
 
 
 
