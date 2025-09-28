@@ -30,6 +30,7 @@ Tmin-Per-GeoTIFF/
 ```
 
 # Requisitos
+```
 streamlit
 pandas
 numpy
@@ -38,6 +39,7 @@ rasterio
 rasterstats
 matplotlib
 seaborn
+```
 # Instalación local:
 pip install -r requirements.txt
 # App Streamlit (2 hojas)
