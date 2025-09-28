@@ -6,29 +6,29 @@ import pandas as pd
 st.set_page_config(page_title="Análisis Tmin y Políticas", layout="wide")
 
 # Ruta relativa: desde app/ ir a assets/
-BASE = Path(__file__).resolve().parent.parent
-ASSETS = BASE / "assets"
+REPO_ROOT = Path(__file__).resolve().parents[1]
+ASSETS = REPO_ROOT / "assets"
 
-# Archivos Hoja 1
-IMG_HIST = "assets/hist_tmin_media.png"
-IMG_MAPA = "assets/mapa_distritos_tmin_mean.png"
-IMG_TOP_MIN = "assets/Top_15_distritos_bajos.png"
-IMG_TOP_MAX = "assets/Top_15_distritos_altos.png"
-CSV_TOP_MIN = "assets/top15_tmin_baja_distritos.csv"
-CSV_TOP_MAX = "assets/top15_tmin_alta_distritos.csv"
+# Archivos Hoja 1 (Path, no strings)
+IMG_HIST   = ASSETS / "hist_tmin_media.png"
+IMG_MAPA   = ASSETS / "mapa_distritos_tmin_mean.png"
+IMG_TOP_MIN = ASSETS / "Top_15_distritos_bajos.png"
+IMG_TOP_MAX = ASSETS / "Top_15_distritos_altos.png"
+CSV_TOP_MIN = ASSETS / "top15_tmin_baja_distritos.csv"
+CSV_TOP_MAX = ASSETS / "top15_tmin_alta_distritos.csv"
 
 # Archivos Hoja 2
-P1_BOX   = "assets/pol1_boxplot_p10.png"
-P1_CNT   = "assets/pol1_conteo_por_depto.png"
-P1_MAP   = "assets/pol1_mapa_objetivo.png"
+P1_BOX = ASSETS / "pol1_boxplot_p10.png"
+P1_CNT = ASSETS / "pol1_conteo_por_depto.png"
+P1_MAP = ASSETS / "pol1_mapa_objetivo.png"
 
-P2_SCT   = "assets/pol2_scatter_min_std.png"
-P2_CNT   = "assets/pol2_conteo_por_depto.png"
-P2_MAP   = "assets/pol2_mapa_objetivo.png"
+P2_SCT = ASSETS / "pol2_scatter_min_std.png"
+P2_CNT = ASSETS / "pol2_conteo_por_depto.png"
+P2_MAP = ASSETS / "pol2_mapa_objetivo.png"
 
-P3_HIST  = "assets/pol3_hist_amazonia_tmin_media.png"
-P3_CNT   = "assets/pol3_conteo_por_depto.png"
-P3_MAP   = "assets/pol3_mapa_objetivo.png"
+P3_HIST = ASSETS / "pol3_hist_amazonia_tmin_media.png"
+P3_CNT  = ASSETS / "pol3_conteo_por_depto.png"
+P3_MAP  = ASSETS / "pol3_mapa_objetivo.png"
 
 # ------------------------------
 # HOJA 1
@@ -40,7 +40,10 @@ with tab1:
 
     c1, c2 = st.columns(2)
     with c1:
-        st.image(str(IMG_HIST), caption="Distribución de Tmin media por distrito", use_container_width=True)
+        if IMG_HIST.exists():
+            st.image(str(IMG_HIST), caption="Distribución de Tmin media por distrito", use_column_width=True)
+        else:
+            st.error(f"No se encontró: {IMG_HIST.relative_to(REPO_ROOT)}")
     with c2:
         st.image(str(IMG_MAPA), caption="Mapa de distritos según Tmin media", use_container_width=True)
 
@@ -118,4 +121,5 @@ with tab2:
     with c2: st.image(str(P3_CNT), caption="Distritos objetivo por departamento", use_container_width=True)
     st.image(str(P3_MAP), caption="Mapa · distritos amazónicos objetivo", use_container_width=True)
     
+
 
